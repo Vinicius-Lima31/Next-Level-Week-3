@@ -1,0 +1,107 @@
+#page-orphanages {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+}
+
+aside{
+    width: clamp(24rem, 25vw, 44rem);
+    background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
+    padding: clamp(3rem, 5vw, 8rem);
+
+    display: flex; /* Coloquei um a lado do outro */
+    flex-direction: column; /* Porém mudei a direção, não é mais do lado, e sim em baixo, colunas */
+
+    justify-content: space-between;
+}
+
+aside h2{
+    margin-top: 6.4rem;
+
+    font: 800 clamp(2rem, 5vw, 3.6rem) /1.1 'Nunito', sans-serif;
+}
+
+aside p {
+    margin-top: 2.4rem;
+    font: 400 1.6rem/1.5 'Nunito', sans-serif;
+}
+
+aside footer p{
+    margin-top: .8rem;
+}
+
+#mapid {
+    width: 100%;
+    height: 100%;
+
+    animation-delay: 200ms;
+}
+
+/* buttton */
+a.create-orphanage{
+    position: absolute; /* o botão faz parte de outro contexto agora, não de onde ele foi feito */
+    right: 4rem;
+    bottom: 4rem;
+
+    z-index: 10; /* Seria eixo na posição Z, seria a profundidade, através daqui eu consigo mexer em qual ficara em cima de qual */
+
+    width: 6.4rem;
+    height: 6.4rem;
+    background: #15C3D6;
+    border: 0;
+    border-radius: 2rem;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
+    transition: background-color 200ms;
+}
+
+a.create-orphanage:hover {
+    background: #17D6EB;
+}
+
+.leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px; /* borda redonda*/
+}
+
+.leaflet-popup-content {
+    color: #0089A5;
+    margin: .8rem 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leaflet-popup-content a {
+    width: 4rem;
+    height: 4rem;
+    background: #15C3D3;
+    box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16); /* Sombra */
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center; /* centralizando no eixo X */
+    justify-content: center; /* centralizando no eixo Y */
+
+    transition: background-color .2s;
+}
+
+.leaflet-popup-content a:hover{
+    background: #17D6EB;
+}
+
+.leaflet-popup-tip {
+    display: none; /* removendo a ponta do balão */
+}
+
+.leaflet-container {
+    font: 700 1.8rem/1 'Nunito', sans-serif;
+
+    z-index: 5; /* eixo Z, profundidade, como o eixo do conteiner é menor que o do botão, então o botão ira sobrepor o mapa, ira ficar em cima */
+}

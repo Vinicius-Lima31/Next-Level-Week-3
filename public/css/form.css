@@ -1,0 +1,124 @@
+form {
+    width: 70rem;
+    margin: 6.4rem auto;
+    background: white;
+    border: 1px solid #D3E2E5;
+
+    border-radius: 2rem;
+
+    overflow: hidden;
+
+    padding: 8rem;
+}
+
+fieldset {
+    border: 0;
+}
+
+fieldset + fieldset { /* ou seja, aqui estou pegando o irmão do <fildset> */
+    margin-top: 8rem;
+}
+
+fieldset legend {
+    width: 100%;
+
+    font-size: 3.2rem;
+    line-height: 1.5;
+
+    color: #5C8599;
+    font-weight: 700;
+
+    border-bottom: 1px solid #D3E2E5;
+    margin-bottom: 4rem;
+    padding-bottom: 2.4rem;
+
+    /*
+        "margin" == espaçamento fora da caixa
+        "padding" == espaçamento dentro da caixa
+    */
+}
+
+.input-block + .input-block { /* vai pegar o irmão do "input-block", ou seja, ele pega o "input-block" do irmão anterior a ele, ou seja, ele não ira pegar o primeiro, por que o primeiro não tem nenhum irmão que vem anterior a ele */
+
+    margin-top: 2.4rem;
+}
+
+.input-block label {
+    color: #8FA7B3;
+    margin-bottom: .8rem;
+    line-height: 1.5;
+}
+
+.input-block label span {
+    font-size: 1.4rem;
+    color: #8FA7B3;
+    margin-left: 2.4rem;
+    line-height: 1.5;
+}
+
+.input-block input,
+.input-block textarea {
+    width: 100%; /* fazendo o <input> e <textarea> oucupar 100% da linha, ou seja, os label irão ficar em outra linha, já que as tags usadas estão oucupando 100% */
+
+    background: #F5F8FA;
+    border: 1px solid #D3E2E5;
+    border-radius: 2rem;
+
+    color: #5C8599;
+    /* outline: none; serve para tirar a borda preta de quando está selecionado, quando eu seleciono algo, fica uma borda preta em volta do que foi selecionado */
+
+    /* .input-block input: focus { ... }  esse "focus" é parecido com "hover", porém o "focus" é quando algo está focado, quando eu clico */
+}
+
+.input-block input {
+    height: 6.4rem; /* aumentando altura do <input> */
+    padding: 0 1.6rem;
+}
+
+.input-block input:valid,  /* Borda do input, porém nos que estão validados, se tiver algum <input> do <form> que tem a obrigação de ser preenchido, ele não ira ficar com a borda */
+.input-block textarea:valid {   
+    border: 1px solid #A1E9C5; 
+}
+
+.input-block textarea {
+    height: clamp(12rem, 16rem, 24rem);
+    resize: vertical; /* "resize" é o aumentamento de <textarea>, ou seja, na página é possivel eu aumentar o tamanho, porém eu quero desativar isso, eu só quero que seja possivel ser aumentada verticalmente */
+
+    padding: 1.6rem; /* espaçamento de dentro da caixa(<textarea>) */
+    line-height: 2.8rem;
+}
+
+.input-block.images button {
+    border: 1px dashed #96D2F0; /* "dashed" é uma forma de borda, borda cortada */
+    width: 100%;
+    background: F5F8FA;
+    height: 6.4rem;
+    padding: 0 1.6rem;
+    margin-top: 2.4rem;
+    border-radius: 2rem;
+
+    cursor: pointer; /* alterando ponteiro do mouse */
+}
+
+.new-upload {
+    position: relative; /* ele fica absoluto, mas somente dentro dessa caixa, ou seja, no CSS abaixo, ele pode ir para qualquer lado, mas com o relative ele só pode se mover aqui dentro */
+}
+
+.new-upload + .new-upload { /* Pegando irmão do .new-upload, sem contar o primeiro */
+    margin-top: 2.4rem; /* adcionando margem de 2.4rem de cada dado adcionado */
+}
+
+.new-upload span {
+    position: absolute; /* posição absoluta, ele pode ir pra qualquer lado da página */
+    right: 12px;
+    bottom: 14px;
+
+    background: #FFFFFF;
+    border: 1px solid #D3E2E5;
+    box-sizing: border-box; /* calculando larguras */
+    display: flex;
+    border-radius: 10px;
+    padding: .6rem; /* 0.6rem */
+
+    cursor: pointer; /* Cursor mudado */
+}

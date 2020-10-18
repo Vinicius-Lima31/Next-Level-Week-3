@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adcionar um orfanato | Happy</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+        <link rel="icon" href="/images/logo-icon.png">
+
+        <!-- CSS inserido -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/animations.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/map.css">
+        <link rel="stylesheet" href="/css/form.css">
+        <link rel="stylesheet" href="/css/buttons.css">
+        <link rel="stylesheet" href="/css/page-create-orphanage.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"> <!-- importando Fonte -->
+    </head>
+
+    <body> 
+        <div id="page-create-orphanage">
+            <aside class="animate-right sidebar"> <!-- barra lateral -->
+                <img src="/images/map-marker.svg" alt="Happy">
+
+                <footer>
+                    <button onclick="history.back()"> <!-- Quando eu clicar, ele vai buscar no historico da navegação a página anterior, e acessa-la ,-->
+                        <img src="/images/arrow-back.svg" alt="Voltar">
+                    </button>
+                </footer>
+            </aside> 
+
+            <main class="animate-appear with-sidebar">
+
+                <!-- Criação de Formulario -->
+                <form action="save-orphanage" method="POST" onsubmit="validate(event)">  <!-- metodo "post", se estiver no metodo "get", ele manda tudo pra URL, eu terei que mandar para o banco de dados com metodo "POST"
+                <!-- "save-orphanage", estou fazendo outra rota -->
+                    <fieldset> <!-- <fieldset> são blocos de separação (separação de dados), temos a parte dos "Dados" e da "Visitação" -->
+                        <legend>Dados</legend>
+
+                        <div class="map-container">
+                            <div id="mapid"></div>
+                            <input type="hidden" name="lat">
+                            <input type="hidden" name="lng">
+
+                            <footer>
+                                <a href="#" id="select-point">
+                                    Clique no mapa para adcionar a localização
+                                </a>
+                            </footer>
+                        </div>
+
+                        <div class="input-block"> 
+                            <label for="name">Nome</label> <!-- o for tem que ser a mesma coisa do "id" do input, por que o label vai ficar em cima do input, se referindo a ele -->
+                            <input type="text" id="name" name="name" required> <!-- required ele obriga a ser preenchido -->
+                            <!-- <label> desse <input>--> <!-- esse "name" do <inpuy> ele ta se referindo ao dado do Back-end -->
+                        </div>
+
+                        <div class="input-block"> 
+                            <label for="about">Sobre <span>Máximo de 300 caracteres</span></label> <!-- o for tem que ser a mesma coisa do "id" do input, por que o label vai ficar em cima do input, se referindo a ele -->
+                            <textarea name="about" id="about" required></textarea> <!-- caixa de texto grande, igual o <input> porém aqui cabe bem mais textos -->
+                        </div>
+
+                        <div class="input-block"> 
+                            <label for="whatsapp">Número de whatsapp</label> <!-- o for tem que ser a mesma coisa do "id" do input, por que o label vai ficar em cima do input, se referindo a ele -->
+                            <input id="whatsapp" name="whatsapp" required> <!-- entrada de dados, do tipo texto -->
+                            <!-- <label> desse <input>--> <!-- esse "name" do <inpuy> ele ta se referindo ao dado do Back-end -->
+                        </div>
+
+                        <div class="input-block images"> 
+                            <label for="images">Foto</label>
+                            
+                            <div class="images-upload" id="images">
+
+                                <div class="new-upload">
+                                    <input 
+                                    name="images" 
+                                    placeholder="Cole o link da foto aqui" 
+                                    required
+                                    type="url"
+                                    /> <!-- "placeholder" é o nome que ficara dentro do <input>, também agora eu tenho que entrar com uma URL, ja que o tipo dela é uma URL -->
+                                    <span onclick="deleteField(event)">
+                                        <img src="/images/remove-filles.svg" alt="Remover Foto">
+                                    </span>
+                                </div>
+
+
+                            </div>
+
+
+                            <button onclick="addPhotoField()" type="button"> <!-- um <button> dentro de um formulário por padrão ele quer enviar o formulario, se for apertado, ele vai entender como se quisesse enviar o formulario, a gente muda o "type" do <button> para que isso não ocorra, alteramos para type="button" -->
+                                <img src="/images/add-file.svg" alt="Nova imagem">
+                            </button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Visitação</legend>
+
+                        <div class="input-block"> 
+                            <label for="instructions">Instruções</label> <!-- o for tem que ser a mesma coisa do "id" do input, por que o label vai ficar em cima do input, se referindo a ele -->
+                            <textarea name="instructions" id="instructions" required></textarea> <!-- caixa de texto grande, igual o <input> porém aqui cabe bem mais textos -->
+                        </div>
+
+                        <div class="input-block"> 
+                            <label for="opening_hours">Horário das visitas</label> <!-- o for tem que ser a mesma coisa do "id" do input, por que o label vai ficar em cima do input, se referindo a ele -->
+                            <input id="opening_hours" name="opening_hours"> <!-- entrada de dados, do tipo texto --> 
+                        </div>
+
+                        <div class="input-block">
+                            <label for="open_on_weekends">Atende fim de semana?</label>
+                            <input type="hidden" 
+                            id="open_on_weekends" 
+                            name="open_on_weekends" 
+                            value="1" 
+                            required
+                            /> <!-- valor padrão como verdadeiro(true) // "hidden" é escondido // required é obrigação ser preenchido -->
+                        
+                            <div class="button-select">
+                                <button data-value="1"
+                                 onclick="toggleSelect(event)"
+                                type="button"
+                                 class="active">Sim</button> <!-- type="button" para não atualizar a página, por que <button> dentro de um formulario entende como se fosse para enviar o formulario, por isso eu tive que definir o "type" do <button> -->
+                                <button data-value="0"
+                                 onclick="toggleSelect(event)"
+                                type="button"
+                                >Não</button> <!-- type="button" para não atualizar a página, por que <button> dentro de um formulario entende como se fosse para enviar o formulario, por isso eu tive que definir o "type" do <button> -->
+                            </div>
+
+                            <button type="submit" class="primary-button">
+                                Confirmar
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+            </main>
+
+        </div>
+
+        <script src="/scripts/page-create-orphanage.js"></script>
+
+    </body>
+</html> 

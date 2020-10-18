@@ -1,0 +1,70 @@
+<!DOCTYPE html> <!-- Apertando ALT + Z as letras ficam a mostra dependendo do tamanho da tela -->
+<html lang="pt-br"> <!-- Atributo, colocamos com = "" , no caso é a linguagem-->
+    <head> <!-- Tag's especificas da Página -->
+        <meta charset="UTF-8"> <!-- meta tag, elas próprio se-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Happy</title>
+
+        <link rel="icon" href="/images/logo-icon.png">  <!-- ./ (ponto e barra) significa que estou no diretorio raiz, no principal --> 
+
+        <!-- Eu quero alterar o Icone da Página, esse Link serve para referencia um CSS, porém não irei usar o "stylesheet, irei usar outro atributo -->
+
+        <!-- CSS inserido -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/animations.css">
+        <link rel="stylesheet" href="/css/page-landing.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet"> <!-- importando Fonte -->
+    </head>
+
+    <body> <!-- Tag's Visuais da Página -->
+        <div id="page-landing"> <!-- Adcionei mais 2 caixas, isso fala na parte de CSS (box model) -->
+            <div id="container"> <!-- Adcionei mais 2 caixas, isso fala na parte de CSS (box model) -->
+                <header> <!-- cabeçalho -->
+                    <img 
+                    class="animate-up"
+                    id="logo" 
+                    src="/images/logo.svg" alt="Logomarca de Happy"> 
+                    <!-- "src" é o caminho-->
+        
+                    <div class="location animate-up">
+                        <strong>Rio do Sul</strong> <!-- inline block, só oucupa um pedaço da linha do código -->
+                        <p>Santa Catarina</p> <!-- paragrafo ele oucupa toda o espaço -->
+        
+                    </div>
+                </header>
+                
+                <main> <!-- contéudo principal -->
+                    <h1 class="animate-up">Leve felicidade para o mundo</h1>
+        
+                    <!-- Agora abaixo eu quero fazer uma seção, e que mais ao lado tenha um botão, esse botão é um link, atraves dele eu quero acessar outra coisa -->
+                    
+                    <section class="visit">
+                        <p class="animate-up">Visite orfanatos e mude o dia de muitas crianças</p>
+        
+                        <a href="/orphanages" title="Visite orfanatos" class="animate-up"> <!-- title para quando eu passar o mouse por cima, aparecer essa mensagem -->
+                            <img src="/images/arrow.svg" alt="Ir para o mapa">
+                        </a>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </body>
+</html> <!-- HTML montado, agora iremos pro CSS ... -->
+
+
+<!--
+    HTML
+        HyperText
+            hipertexto (links)
+
+        Markup
+            marcação <tags>
+
+        Language
+            linguagem
+
+-->
+
+<!-- Iremos rodar nossa aplicação em servidores, para isso iremos baixar um Puglin chamado "Live Server" -->
+<!-- Depois de instalar é só clicar com botão direito no "index" e clicar em "Open With Live Server" -->

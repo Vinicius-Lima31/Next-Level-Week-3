@@ -1,0 +1,123 @@
+#page-landing{
+    background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%) no-repeat;
+    /* "no-repeat é pra não repetir */
+
+    text-align: center; /* Texto alinhado no centro */
+
+    min-height: 100vh; /* no minimo 100vh, se tiver que passar, ele pode, porém esse é o minimo */
+
+    display: flex;
+
+}
+#container {
+    margin:  auto; /* Margem automática para altura e largura */
+
+    width: 90%;
+    /* 112rem == 1120px */
+    width: min(90%, 112rem)  /* 1120px pro conteúdo, e na parte de fora ira ficar com outro espaço, ele vai ficar com 90% ou 1120px, dependendo de qual for menor, ele ira usar o menor, se 90% for menor, então ele irar usar, de 112rem(1120px) for menor, então ele ira usar esse, sobrescrevi a de cima */
+
+}
+
+.location, h1, .visit p {
+    height: 16vh;
+}
+
+#logo {
+    animation-delay: 50ms; /* delay é atraso, ele tera um atraso de 50 milisegundos */
+}
+
+.location {
+    animation-delay: 100ms;
+}
+
+main h1{
+    animation-delay: 150ms;
+    font-size: clamp(4rem, 8vw, 8.4rem); /* uma função que recebo 3 valores, o menor valor, o valor padrão, e o maior valor, serve para não deixar a fonte muito grande ou muito pequena */
+}
+
+
+
+.visit a:hover { /* Mouse em cima */
+    background: #96feff;
+}
+
+.visit p {
+    animation-delay: 200ms;
+}
+
+.visit a {
+    width: 8rem;
+    height: 8rem;
+    background: #ffd666;
+
+    border: none; /* removo bordas */
+    border-radius: 3rem; /* arredondo a borda em 3rem */
+
+    display: flex;
+    align-items: center; /* Alinha apenas no eixo Y, apenas de altura */
+    justify-content: center; /* ele vai mexer no eixo X, para ficar todos alinhados no eixo Y */
+
+    margin: auto;
+
+    transition: background 200ms;
+    animation-delay: 250ms;
+}
+
+/* desktop version */
+        /* Para usar operações com @, como media, etc, é necessario usar o viewport no HTML, que ja foi colocado no HEAD */
+
+@media (min-width: 760px) { /* Ira realizar a operação caso o minimo de largura seja 760px */
+
+    #container {
+        padding: 5rem 2rem;
+        /* shorthand background: image repeat position  / size */
+        background: url(../images/bg.svg) no-repeat 80% / clamp(30rem, 54vw, 56rem);
+    }
+    
+    header{
+        display: flex; /* Tudo que estiver dentro do <header> ele vai estár alinhado na mesma linha, já que eu apliquei o display flex */
+
+        align-items: center; /* Não foi completamente alinhado, por que o vh de antes, foi marcado com outro valor, por isso temos que alterar */
+
+        justify-content: space-between; /* Estamos separando o "happy" do "Rio sul" foram separados, cada um foi para um canto */
+
+    }
+
+    .location, h1, .visit p{ /* Desejo alinhar tudo */
+        height: initial; /* "initial" a gente usa para coloar nas primeiras regras que ja veio, antes mesmo de a gente aplicar o CSS */
+
+        text-align: initial; /* ele volta para o alinhamento inicial */
+
+    }
+
+    .location{
+        text-align: right; /* Alinhei o "Rio sul" para direita */
+        font-size: 2.4rem;
+        line-height: 1.5;;
+    }
+
+    main h1 { /* Pegando o textão */
+        font-weight: bold; /* Negrito */
+        line-height: .88; /* Altura das linhas */
+        
+        margin: clamp(10%, 9vh, 12%) 0 4rem;
+
+        width: min(300px, 80%); /* Ira Aplicar qual for o menor entre os 2 */
+    }
+
+    .visit {
+        display: flex; /* alinhei tudo na mesma linha oque estava dentro do visit */
+        align-items: center; /* alinhei no centro*/
+        justify-content: space-between; /* espaçamento */
+    }
+
+    .visit p{
+        font-size: 2.4rem;
+        line-height: 1.5;
+        width: clamp(20rem, 20vw, 30rem);
+    }
+
+    .visit a{
+        margin: initial; /* posição inicial, antes ele estava pegando o "margin: auto" */
+    }
+}

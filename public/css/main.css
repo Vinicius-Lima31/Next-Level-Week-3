@@ -1,0 +1,28 @@
+* { /* seletor universal */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh; 
+    /*vh (viewport height) utilizam a largura e altura da viewport respectivamente. Com elas é possível atribuir a um elemento o tamanho (seja altura, seja largura) da viewport. 
+    100vh seria todo tamanho da tela em altura */
+
+    color: white; /* Tudo branco */
+    background: #EBF2F5;
+}
+
+:root { /* Através do root temos controle de medidas das nossas fontes, 62.5% de 16px, que reflete a 10px */
+    font-size: 62.5%;
+}
+
+body, input, button, textarea { /* Vai ser falado isso mais a frente em outras aulas */
+    font-weight: 400; /* peso da fonte */
+    font-size: 18px; /* tamanho da fonte */
+    line-height: 1; /* Distanciamento de linhas */
+
+    font-family: 'Nunito', sans-serif;
+
+    font: 400 1.8rem/1 'Nunito', sans-serif; /* Isso aqui é a mesma coisa que foi escrito acima, porém de forma bem reduzida, posso até apagar as anteriores, porém irei deixar */
+}
